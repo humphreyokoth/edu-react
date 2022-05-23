@@ -1,7 +1,10 @@
 import React, { useState } from "react";
 import {authService} from "../services/authServices";
+import { useNavigate } from "react-router-dom";
 
 const Login = () => {
+
+    const navigate = useNavigate();
   const [formData, setFormData] = useState({ email: "", password: "" });
 
   const handleChange = (e) => {
@@ -15,6 +18,10 @@ const Login = () => {
       e.preventDefault();
       console.log(formData)
       await authService.loginUser(formData);
+      const user = await authService.loginUser(formData);
+      if(user){
+        navigate("/");
+      }
   }
   return (
     <div className="login">
