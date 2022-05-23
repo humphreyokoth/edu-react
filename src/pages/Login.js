@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {authService} from "../services/authServices";
 import { useNavigate } from "react-router-dom";
 
@@ -23,6 +23,10 @@ const Login = () => {
         navigate("/");
       }
   }
+
+  useEffect(()=>{
+    const access_token = localStorage.getItem("access_token")
+  },[navigate])
   return (
     <div className="login">
    
