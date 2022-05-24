@@ -1,7 +1,8 @@
 import React,{useEffect,useState} from "react";
-import { Navigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const Home =()=>{
+const navigate = useNavigate();
  const [user,setUser] = useState(null);
 
 
@@ -9,8 +10,9 @@ const Home =()=>{
     const _user = JSON.parse(localStorage.getItem('user'))
     if(typeof _user!== "undefined" || _user !== null){
         setUser(_user);
-    }else{
-        Navigate("/login")
+    }
+    if(_user === null){
+        navigate("/login")
     }
   },[])
     return(
