@@ -6,9 +6,9 @@ const Home =()=>{
 
 
   useEffect (()=>{
-    const user = JSON.parse(localStorage.getItem('uset'))
-    if(uset){
-        setUser(user);
+    const _user = JSON.parse(localStorage.getItem('user'))
+    if(typeof _user!== "undefined" || _user !== null){
+        setUser(_user);
     }else{
         Navigate("/login")
     }
@@ -16,7 +16,7 @@ const Home =()=>{
     return(
         <div className="App">
     <h1>Home</h1>
-    <h3> Welcome{user.email}</h3>
+    <h3> Welcome{user?.email}</h3>
 
         
         </div>
